@@ -5,7 +5,7 @@ import com.tom.mapreduce.MapperReducer;
 
 import java.util.List;
 
-public class WordCountMapperReducer implements MapperReducer<Integer> {
+public class WordCount implements MapperReducer<Integer> {
 
     public void map(Emitter<Integer> emitter, String record) {
 

@@ -14,8 +14,8 @@ public class WordCountTest {
 
         DataSource dataSource = new WordCountDataSource();
 
-        MapReduceJob<Integer> job = new MapReduceJob<Integer>(new WordCountMapperReducer(),
-                                                              dataSource);
+        MapReduceJob<Integer> job = new MapReduceJob<Integer>(new WordCount(),
+                                                        dataSource);
         assertThat(job.getResults().get("tom"), is(2));
         assertThat(job.getResults().get("kim"), is(2));
         assertThat(job.getResults().get("ian"), is(2));
