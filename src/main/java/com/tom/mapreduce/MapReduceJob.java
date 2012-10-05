@@ -10,14 +10,14 @@ public class MapReduceJob<T> implements Emitter<T> {
     }
 
     private Phase phase;
-    private MaperReducer maperReducer;
+    private MapperReducer mapperReducer;
 
     private Map<String, T> finalResults = new HashMap<String, T>();
     private Map<String, List<T>> results = new HashMap<String, List<T>>();
 
-    public MapReduceJob(MaperReducer maperReducer, DataSource dataSource) {
+    public MapReduceJob(MapperReducer mapperReducer, DataSource dataSource) {
 
-        this.maperReducer = maperReducer;
+        this.mapperReducer = mapperReducer;
         map(dataSource);
         reduce();
         print();
@@ -28,7 +28,7 @@ public class MapReduceJob<T> implements Emitter<T> {
 
         Iterator<String> iterator = dataSource.getIterator();
         while(iterator.hasNext()) {
-            maperReducer.map(this, iterator.next());
+            mapperReducer.map(this, iterator.next());
         }
     }
 
@@ -36,7 +36,7 @@ public class MapReduceJob<T> implements Emitter<T> {
         phase = Phase.REDUCE;
 
         for (Map.Entry<String, List<T>> mapResult : results.entrySet()) {
-            maperReducer.reduce(this, mapResult.getKey(), mapResult.getValue());
+            mapperReducer.reduce(this, mapResult.getKey(), mapResult.getValue());
         }
     }
 
