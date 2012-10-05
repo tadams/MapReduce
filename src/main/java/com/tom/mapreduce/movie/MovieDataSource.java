@@ -9,15 +9,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-public class MovieDataSource implements DataSource<Movie> {
+public class MovieDataSource implements DataSource {
 
-    List<Movie> movies;
+    List<String> movies;
 
     public MovieDataSource(String fileName) {
         movies = loadFile(fileName);
     }
 
-    public Iterator<Movie> getIterator() {
+    public Iterator<String> getIterator() {
         return movies.iterator();
     }
 
@@ -25,17 +25,16 @@ public class MovieDataSource implements DataSource<Movie> {
         return movies.size();
     }
 
-    private List<Movie> loadFile(String fileName) {
+    private List<String> loadFile(String fileName) {
 
         Scanner scanner = null;
-        List<Movie> movies = new ArrayList<Movie>();
+        List<String> movies = new ArrayList<String>();
 
         try {
             scanner = new Scanner(new FileInputStream(fileName));
 
             while (scanner.hasNextLine()) {
-                String record = scanner.nextLine();
-                movies.add(buildMovie(record));
+                movies.add(scanner.nextLine());
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -46,11 +45,6 @@ public class MovieDataSource implements DataSource<Movie> {
         return movies;
     }
 
-    private Movie buildMovie(String record) {
-        String[] fields = record.split("\t");
-        return new Movie(fields[2],
-                         Double.parseDouble(fields[1]),
-                         Integer.parseInt(fields[0]));
-    }
+
 
 }

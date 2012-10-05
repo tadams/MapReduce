@@ -10,12 +10,12 @@ public class MapReduceJob<T> implements Emitter<T> {
     }
 
     private Phase phase;
-    private MapperReducer mapperReducer;
+    private MapperReducer<T> mapperReducer;
 
-    private Map<String, T> finalResults = new HashMap<String, T>();
+    private Map<String, T> finalResults = new TreeMap<String, T>();
     private Map<String, List<T>> results = new HashMap<String, List<T>>();
 
-    public MapReduceJob(MapperReducer mapperReducer, DataSource dataSource) {
+    public MapReduceJob(MapperReducer<T> mapperReducer, DataSource dataSource) {
 
         this.mapperReducer = mapperReducer;
         map(dataSource);

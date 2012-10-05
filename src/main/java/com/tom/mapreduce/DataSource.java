@@ -2,9 +2,9 @@ package com.tom.mapreduce;
 
 import java.util.Iterator;
 
-public interface DataSource<T> {
+public interface DataSource {
 
-    public Iterator<T> getIterator();
+    public Iterator<String> getIterator();
 
     public int size();
 

@@ -5,7 +5,7 @@ import com.tom.mapreduce.DataSource;
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class WordCountDataSource implements DataSource<String> {
+public class WordCountDataSource implements DataSource {
 
     private static final String[] DATA = new String[] { "tom kim ian", "nancy bob tom kim", "ian"};
 

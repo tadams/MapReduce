@@ -2,8 +2,6 @@ package com.tom.mapreduce.wordcount;
 
 import com.tom.mapreduce.DataSource;
 import com.tom.mapreduce.MapReduceJob;
-import com.tom.mapreduce.wordcount.WordCountDataSource;
-import com.tom.mapreduce.wordcount.WordCountMapperReducer;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
